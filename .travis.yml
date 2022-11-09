@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install: 
-  - docker build -t worklifetech/docker-reat-test -f ./client/Dockerfile.dev ././client/Dockerfile.dev
+  - docker build -t worklifetech/docker-reat-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true  worklifetech/docker-reat-test npm test
