@@ -10,6 +10,11 @@ script:
 
 after_success: 
   - docker build -t worklifetech/multi-client ./client
-  - docker build -t worklifetech/multi-nging ./nginx
+  - docker build -t worklifetech/multi-nginx ./nginx
   - docker build -t worklifetech/multi-server ./server
   - docker build -t worklifetech/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push worklifetech/multi-client
+  - docker push worklifetech/multi-nginx
+  - docker push worklifetech/multi-server
+  - docker push worklifetech/multi-worker
